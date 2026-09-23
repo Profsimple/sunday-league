@@ -10,6 +10,7 @@ import {
   CalendarDays,
   ArrowRight,
 } from "lucide-react"
+import { TeamsSection } from "@/components/teams-section"
 
 const PHONE = "447480796567"
 const PHONE_DISPLAY = "+44 7480 796567"
@@ -128,7 +129,7 @@ export default function Page() {
               Join this Sunday
             </a>
             <a
-              href="#details"
+              href="#teams"
               className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-primary-foreground/40 px-8 py-4 text-base font-bold uppercase tracking-wide text-primary-foreground backdrop-blur-sm transition-colors hover:bg-primary-foreground/10"
             >
               View fixtures
@@ -163,6 +164,9 @@ export default function Page() {
           ))}
         </div>
       </section>
+
+      {/* Teams & Players */}
+      <TeamsSection />
 
       {/* Sign up */}
       <section className="bg-primary text-primary-foreground">
