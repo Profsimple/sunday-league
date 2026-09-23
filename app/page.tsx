@@ -51,11 +51,14 @@ export default function Page() {
       {/* Hero */}
       <section className="relative isolate overflow-hidden">
         <img
-          src="/pitch.png"
-          alt="Floodlit 5-a-side football pitch at night"
+          src="/players.png"
+          alt="Seven footballers competing with a ball on a floodlit pitch at night"
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-primary/85" aria-hidden="true" />
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/60 to-primary/80"
+          aria-hidden="true"
+        />
         <div className="relative mx-auto flex min-h-[85vh] max-w-3xl flex-col items-center justify-center px-6 py-24 text-center">
           <span className="mb-6 inline-flex items-center rounded-full border border-primary-foreground/30 px-4 py-1.5 text-sm font-medium uppercase tracking-widest text-primary-foreground/90">
             Every Sunday · 7PM
