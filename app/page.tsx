@@ -1,4 +1,4 @@
-import { MapPin, Clock, Users, Trophy, Phone, Banknote, Timer } from "lucide-react"
+import { MapPin, Clock, Users, Trophy, Phone, Banknote, Timer, MessageCircle } from "lucide-react"
 
 const PHONE = "447480796567"
 const PHONE_DISPLAY = "+44 7480 796567"
@@ -122,10 +122,11 @@ export default function Page() {
             Message Jordan Bantu
           </a>
           <a
-            href={`tel:+${PHONE}`}
-            className="mt-4 text-lg font-semibold tracking-wide text-primary-foreground/90 underline-offset-4 hover:underline"
+            href={WHATSAPP}
+            className="mt-4 inline-flex items-center gap-2 text-lg font-semibold tracking-wide text-primary-foreground/90 underline-offset-4 hover:underline"
           >
-            {PHONE_DISPLAY}
+            <MessageCircle className="h-5 w-5" aria-hidden="true" />
+            WhatsApp {PHONE_DISPLAY}
           </a>
         </div>
       </section>
