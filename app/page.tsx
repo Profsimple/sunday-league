@@ -1,4 +1,4 @@
-import { MapPin, Clock, Users, Trophy, Phone } from "lucide-react"
+import { MapPin, Clock, Users, Trophy, Phone, Banknote, Timer } from "lucide-react"
 
 const PHONE = "447480796567"
 const PHONE_DISPLAY = "+44 7480 796567"
@@ -31,6 +31,18 @@ const details = [
     value: "Everyone welcome",
     sub: "All abilities",
   },
+  {
+    icon: Banknote,
+    label: "Cost",
+    value: "£6 per person",
+    sub: "Per game",
+  },
+  {
+    icon: Timer,
+    label: "Duration",
+    value: "1 hour per game",
+    sub: "Full 60 minutes",
+  },
 ]
 
 export default function Page() {
@@ -52,7 +64,7 @@ export default function Page() {
             Sunday League
           </h1>
           <p className="mt-6 max-w-xl text-pretty text-lg text-primary-foreground/80">
-            7/8-a-side football at Beckton Power League. Open to everyone — bring your boots and your best.
+            7/8-a-side football at Beckton Power League. Open to everyone — just £6 per person, per game.
           </p>
           <a
             href={WHATSAPP}
@@ -97,7 +109,7 @@ export default function Page() {
             Ready to play?
           </h2>
           <p className="mt-4 max-w-md text-pretty text-primary-foreground/80">
-            Spots are first come, first served. Message Jordan Bantu to grab yours for this Sunday.
+            Spots are £6 per person, per game — first come, first served. Message Jordan Bantu to grab yours for this Sunday.
           </p>
           <a
             href={WHATSAPP}
