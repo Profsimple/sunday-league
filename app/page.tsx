@@ -1,10 +1,34 @@
-import { MapPin, Clock, Users, Trophy, Phone, Banknote, Timer, MessageCircle } from "lucide-react"
+import {
+  MapPin,
+  Clock,
+  Users,
+  Trophy,
+  Phone,
+  Banknote,
+  Timer,
+  MessageCircle,
+  CalendarDays,
+  ArrowRight,
+} from "lucide-react"
 
 const PHONE = "447480796567"
 const PHONE_DISPLAY = "+44 7480 796567"
 const WHATSAPP = `https://wa.me/${PHONE}?text=${encodeURIComponent(
   "Hi Jordan, I'd like to join Sunday League football.",
 )}`
+const SPOTS_LEFT = 8
+
+function getNextSunday() {
+  const now = new Date()
+  const daysUntil = (7 - now.getDay()) % 7 // 0 = today is Sunday
+  const next = new Date(now)
+  next.setDate(now.getDate() + daysUntil)
+  return next.toLocaleDateString("en-GB", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+  })
+}
 
 const details = [
   {
@@ -56,31 +80,66 @@ export default function Page() {
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div
-          className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/60 to-primary/80"
+          className="absolute inset-0 bg-gradient-to-br from-primary/85 via-primary/70 to-background/90"
           aria-hidden="true"
         />
-        <div className="relative mx-auto flex min-h-[85vh] max-w-3xl flex-col items-center justify-center px-6 py-24 text-center">
-          <span className="mb-6 inline-flex items-center rounded-full border border-primary-foreground/30 px-4 py-1.5 text-sm font-medium uppercase tracking-widest text-primary-foreground/90">
-            Every Sunday · 7PM
+        <div className="relative mx-auto flex min-h-[92vh] max-w-5xl flex-col justify-center px-6 py-24">
+          <span className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-primary-foreground/30 bg-primary-foreground/10 px-4 py-1.5 text-sm font-semibold uppercase tracking-widest text-primary-foreground backdrop-blur-sm">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-foreground opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-primary-foreground" />
+            </span>
+            7-a-side · Every Sunday
           </span>
-          <h1 className="text-balance text-5xl font-extrabold uppercase leading-none tracking-tight text-primary-foreground sm:text-7xl">
+
+          <h1 className="max-w-3xl text-balance text-6xl font-black uppercase leading-[0.9] tracking-tight text-primary-foreground sm:text-8xl">
             Sunday League
           </h1>
-          <p className="mt-6 max-w-xl text-pretty text-lg text-primary-foreground/80">
-            7/8-a-side football at Beckton Power League. Open to everyone — just £6 per person, per game.
+
+          <p className="mt-6 max-w-xl text-balance text-2xl font-bold uppercase leading-tight tracking-tight text-primary-foreground/90 sm:text-3xl">
+            Sunday Football.
+            <br className="hidden sm:block" /> Every Week. No Excuses.
           </p>
-          <a
-            href={WHATSAPP}
-            className="mt-10 inline-flex items-center gap-2 rounded-full bg-primary-foreground px-8 py-4 text-base font-semibold text-primary shadow-lg transition-transform hover:scale-[1.03]"
-          >
-            <Phone className="h-5 w-5" aria-hidden="true" />
-            Sign up now
-          </a>
+
+          {/* Key info strip */}
+          <dl className="mt-10 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
+            {[
+              { icon: CalendarDays, label: "Next game", value: getNextSunday() },
+              { icon: Clock, label: "Kick-off", value: "7:00 PM" },
+              { icon: MapPin, label: "Venue", value: "Beckton Power League" },
+              { icon: Users, label: "Spaces left", value: `${SPOTS_LEFT} spots` },
+            ].map(({ icon: Icon, label, value }) => (
+              <div key={label} className="flex flex-col gap-1">
+                <dt className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-primary-foreground/70">
+                  <Icon className="h-4 w-4" aria-hidden="true" />
+                  {label}
+                </dt>
+                <dd className="text-base font-bold leading-tight text-primary-foreground">{value}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+            <a
+              href={WHATSAPP}
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary-foreground px-8 py-4 text-base font-bold uppercase tracking-wide text-primary shadow-lg transition-transform hover:scale-[1.03]"
+            >
+              <MessageCircle className="h-5 w-5" aria-hidden="true" />
+              Join this Sunday
+            </a>
+            <a
+              href="#details"
+              className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-primary-foreground/40 px-8 py-4 text-base font-bold uppercase tracking-wide text-primary-foreground backdrop-blur-sm transition-colors hover:bg-primary-foreground/10"
+            >
+              View fixtures
+              <ArrowRight className="h-5 w-5" aria-hidden="true" />
+            </a>
+          </div>
         </div>
       </section>
 
       {/* Details */}
-      <section className="mx-auto max-w-4xl px-6 py-20">
+      <section id="details" className="mx-auto max-w-4xl scroll-mt-8 px-6 py-20">
         <h2 className="mb-10 text-center text-sm font-semibold uppercase tracking-widest text-muted-foreground">
           The details
         </h2>
