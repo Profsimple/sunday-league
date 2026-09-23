@@ -11,6 +11,7 @@ import {
   ArrowRight,
 } from "lucide-react"
 import { TeamsSection } from "@/components/teams-section"
+import { RulesSection } from "@/components/rules-section"
 
 const PHONE = "447480796567"
 const PHONE_DISPLAY = "+44 7480 796567"
@@ -167,6 +168,9 @@ export default function Page() {
 
       {/* Teams & Players */}
       <TeamsSection />
+
+      {/* Rules & Guidelines */}
+      <RulesSection />
 
       {/* Sign up */}
       <section className="bg-primary text-primary-foreground">
